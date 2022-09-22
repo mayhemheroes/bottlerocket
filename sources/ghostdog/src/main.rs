@@ -50,7 +50,7 @@ fn run() -> Result<()> {
 }
 
 /// Find the device type by examining the partition table, if present.
-fn find_device_type<R>(reader: &mut R) -> Result<String>
+pub fn find_device_type<R>(reader: &mut R) -> Result<String>
 where
     R: Read + Seek,
 {
@@ -104,11 +104,11 @@ fn main() {
 }
 
 /// Potential errors during `ghostdog` execution.
-mod error {
+pub mod error {
     use snafu::Snafu;
     #[derive(Debug, Snafu)]
     #[snafu(visibility(pub(super)))]
-    pub(super) enum Error {
+    pub enum Error {
         #[snafu(display("Failed to open '{}': {}", path.display(), source))]
         DeviceOpen {
             path: std::path::PathBuf,

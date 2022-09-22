@@ -1,0 +1,7 @@
+project: bottlerocket
+target: img-scanning
+
+cmds:
+  - cmd: /img_scanning
+  - cmd: /img_scanning_no_inst @@
+    libfuzzer: false
